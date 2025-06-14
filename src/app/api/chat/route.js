@@ -27,7 +27,7 @@ export async function POST(req) {
       `
         },
         ...messages
-      ]
+      ],
 
       max_tokens: 500,
     });
