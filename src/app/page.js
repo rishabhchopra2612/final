@@ -3,7 +3,9 @@ import React, { useState } from 'react';
 
 export default function Home() {
   const [messages, setMessages] = useState([
-    { role: 'system', content: 'Welcome to GREEN AI. Ask any question related to educational topics!' }
+    { role: 'system', content: 'Welcome to GREEN AI 🌿 — your personal AI-powered tutor, trained to simplify Learning. 
+
+Ask me anything — concepts, formulas, definitions, or exam questions — and I'll explain it clearly, step-by-step, just like your best teacher would! 📚✨' }
   ]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
@@ -33,35 +35,53 @@ export default function Home() {
   };
 
   return (
-    <div style={{ maxWidth: 600, margin: 'auto', padding: 20, fontFamily: 'Arial' }}>
-      <img src="/logo.png" alt="Logo" style={{ height: 60, marginBottom: 20 }} />
-      <h1 style={{ color: '#2E8B57' }}>GREEN AI</h1>
-      <div style={{
-        border: '1px solid #ccc',
-        borderRadius: 10,
-        padding: 10,
-        height: 400,
-        overflowY: 'scroll',
-        background: '#f6fdf8'
-      }}>
-        {messages.map((msg, idx) => (
-          <div key={idx} style={{ margin: '10px 0', textAlign: msg.role === 'user' ? 'right' : 'left' }}>
-            <strong>{msg.role === 'user' ? 'You' : 'GREEN AI'}:</strong> {msg.content}
-          </div>
-        ))}
-        {loading && <div><i>Thinking...</i></div>}
-      </div>
-      <div style={{ marginTop: 10, display: 'flex' }}>
-        <input
-          style={{ flex: 1, padding: 10, borderRadius: 10, border: '1px solid #ccc' }}
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Ask your question..."
-          onKeyDown={(e) => { if (e.key === 'Enter') handleSend(); }}
-        />
-        <button style={{ marginLeft: 10, padding: '10px 20px', borderRadius: 10, background: '#2E8B57', color: 'white' }} onClick={handleSend}>
-          Send
-        </button>
+    <div style={{
+      background: 'linear-gradient(to bottom right, #e8f5e9, #ffffff)',
+      minHeight: '100vh',
+      padding: 20,
+      fontFamily: 'Arial'
+    }}>
+      <div style={{ maxWidth: 600, margin: 'auto' }}>
+        <img src="/logo.png" alt="Logo" style={{ height: 60, marginBottom: 20 }} />
+        <h1 style={{ color: '#2E8B57', marginBottom: 20 }}>GREEN AI</h1>
+
+        <div style={{
+          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
+          borderRadius: 15,
+          padding: 20,
+          backgroundColor: '#ffffff',
+          height: 400,
+          overflowY: 'scroll'
+        }}>
+          {messages.map((msg, idx) => (
+            <div key={idx} style={{
+              backgroundColor: msg.role === 'user' ? '#c8e6c9' : '#f0f0f0',
+              padding: '10px 15px',
+              borderRadius: '10px',
+              maxWidth: '80%',
+              margin: msg.role === 'user' ? '10px 0 10px auto' : '10px auto 10px 0'
+            }}>
+              <strong>{msg.role === 'user' ? 'You' : 'GREEN AI'}:</strong>
+              <div dangerouslySetInnerHTML={{ __html: msg.content.replace(/\n/g, '<br/>') }} />
+            </div>
+          ))}
+          {loading && <div><i>Thinking...</i></div>}
+        </div>
+
+        <div style={{ marginTop: 10, display: 'flex' }}>
+          <input
+            style={{ flex: 1, padding: 10, borderRadius: 10, border: '1px solid #ccc' }}
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder="Ask your question..."
+            onKeyDown={(e) => { if (e.key === 'Enter') handleSend(); }}
+          />
+          <button
+            style={{ marginLeft: 10, padding: '10px 20px', borderRadius: 10, background: '#2E8B57', color: 'white' }}
+            onClick={handleSend}>
+            Send
+          </button>
+        </div>
       </div>
     </div>
   );
