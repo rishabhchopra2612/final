@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 export default function Home() {
   const [messages, setMessages] = useState([
-    { role: 'system', content: 'Welcome to GREEN AI 🌿 — your personal AI-powered tutor, trained to simplify Learning.\n
+    { role: 'system', content: 'Welcome to GREEN AI 🌿 — your personal AI-powered tutor, trained to simplify Learning.
       Ask me anything — concepts, formulas, definitions, or exam questions — and I\'ll explain it clearly, step-by-step, just like your best teacher would! 📚✨' }
   ]);
   const [input, setInput] = useState('');
