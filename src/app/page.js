@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 
 export default function Home() {
   const [messages, setMessages] = useState([
-    { role: 'system', content: 'Welcome to GREEN AI 🌿 — your personal AI-powered tutor, trained to simplify Class 12 Mathematics & Biology. Ask me anything — concepts, formulas, definitions, or exam questions — and I\'ll explain it clearly, step-by-step, just like your best teacher would! 📚✨' }
+    { role: 'system', content: 'Welcome to GREEN AI 🌿 — your personal AI-powered tutor, trained to simplify Learning.\n
+      Ask me anything — concepts, formulas, definitions, or exam questions — and I\'ll explain it clearly, step-by-step, just like your best teacher would! 📚✨' }
   ]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
@@ -40,7 +41,7 @@ export default function Home() {
       fontFamily: 'Arial'
     }}>
       <div style={{ maxWidth: 800, margin: 'auto' }}>
-        <img src="/logo.png" alt="Logo" style={{ height: 80, marginBottom: 20 }} />
+        <img src="/logo.png" alt="Logo" style={{ height: 160, marginBottom: 20 }} />
         <h1 style={{ color: '#2E8B57', marginBottom: 10 }}>GREEN AI</h1>
         <p style={{ fontSize: '16px', color: '#555', marginBottom: 20 }}>
           Powered by Evergreen wisdom, driven by AI intelligence — welcome to the future of learning with GREEN AI.
