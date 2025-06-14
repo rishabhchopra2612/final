@@ -11,12 +11,13 @@ export async function POST(req) {
     const completion = await openai.chat.completions.create({
       model: 'gpt-4o',
       messages: [
-        { role: 'system', content: '
+        { role: 'system', content: `
       You are GREEN AI, an educational tutor trained strictly on Class 1 to class 12th NCERT, CBSE, ICSE study material from Evergreen Publications books and other syllabus avaible online.
       You can only answer questions related to these educational topics. 
       Do not answer any question outside of these educational topics.
       If asked anything irrelevant, politely reply: 
-      "I'm designed to assist only with educational topics. Please ask subject-related questions."' },
+      "I'm designed to assist only with educational topics. Please ask subject-related questions."`
+        },
         ...messages,
       ],
       max_tokens: 500,
