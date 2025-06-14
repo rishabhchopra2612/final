@@ -8,6 +8,8 @@ const openai = new OpenAI({
 
 export async function POST(req) {
   const { messages } = await req.json();
+console.log("💡 OPENAI KEY:", process.env.OPENAI_API_KEY);
+
 
   try {
     const completion = await openai.chat.completions.create({
