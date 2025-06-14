@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 export default function Home() {
   const [messages, setMessages] = useState([
-    { role: 'system', content: 'Welcome to GREEN AI. Ask any question from Class 12 Mathematics and Biology!' }
+    { role: 'system', content: 'Welcome to GREEN AI. Ask any question realted to educational Topics!' }
   ]);
   const [input, setInput] = useState('');
 
