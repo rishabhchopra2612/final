@@ -1,35 +1,26 @@
 import { NextResponse } from 'next/server';
 import OpenAI from 'openai';
 
-// Initialize OpenAI client
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 export async function POST(req) {
   const { messages } = await req.json();
-
-  // Debugging: print your OpenAI key in Vercel logs
-  console.log("🔑 My OpenAI Key:", process.env.OPENAI_API_KEY);
+  console.log("✅ VERCEL OPENAI KEY:", process.env.OPENAI_API_KEY);
 
   try {
     const completion = await openai.chat.completions.create({
       model: 'gpt-4o',
       messages: [
-        {
-          role: 'system',
-          content: `
+        { role: 'system', content: '
       You are GREEN AI, an educational tutor trained strictly on Class 1 to class 12th NCERT, CBSE, ICSE study material from Evergreen Publications books and other syllabus avaible online.
       You can only answer questions related to these educational topics. 
       Do not answer any question outside of these educational topics.
       If asked anything irrelevant, politely reply: 
-      "I'm designed to assist only with educational topics. Please ask subject-related questions."
-      `
-        },
-        ...messages
+      "I'm designed to assist only with educational topics. Please ask subject-related questions."' },
+        ...messages,
       ],
-
       max_tokens: 500,
+      temperature: 0.3
     });
 
     const reply = completion.choices[0].message.content;
