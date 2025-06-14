@@ -6,17 +6,32 @@ export default function Home() {
   ]);
   const [input, setInput] = useState('');
 
-  const handleSend = () => {
-    if (input.trim() === '') return;
-    const newMessages = [...messages, { role: 'user', content: input }];
-    setMessages(newMessages);
+  const handleSend = async () => {
+  if (input.trim() === '') return;
 
-    setTimeout(() => {
-      setMessages([...newMessages, { role: 'assistant', content: `AI response to: ${input}` }]);
-    }, 500);
+  const newMessages = [...messages, { role: 'user', content: input }];
+  setMessages(newMessages);
+  setInput('');
 
-    setInput('');
-  };
+  try {
+    const response = await fetch('/api/chat', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        messages: [...newMessages],
+      }),
+    });
+
+    const data = await response.json();
+    setMessages([...newMessages, { role: 'assistant', content: data.reply }]);
+  } catch (err) {
+    console.error(err);
+    setMessages([...newMessages, { role: 'assistant', content: 'Something went wrong. Please try again.' }]);
+  }
+};
+
 
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial' }}>
