@@ -15,17 +15,6 @@ export default function Home() {
     setMessages(newMessages);
     setInput('');
     setLoading(true);
-
-  const formatFractions = (text) => {
-  return text
-    .replace(/1\/2/g, '½')
-    .replace(/1\/4/g, '¼')
-    .replace(/3\/4/g, '¾')
-    .replace(/1\/3/g, '⅓')
-    .replace(/2\/3/g, '⅔');
-  };
-
-
     try {
       const response = await fetch('/api/chat', {
         method: 'POST',
@@ -41,6 +30,15 @@ export default function Home() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const formatFractions = (text) => {
+  return text
+    .replace(/1\/2/g, '½')
+    .replace(/1\/4/g, '¼')
+    .replace(/3\/4/g, '¾')
+    .replace(/1\/3/g, '⅓')
+    .replace(/2\/3/g, '⅔');
   };
 
   return (
