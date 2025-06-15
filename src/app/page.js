@@ -1,5 +1,6 @@
 'use client';
 import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 export default function Home() {
   const [messages, setMessages] = useState([
@@ -8,6 +9,17 @@ export default function Home() {
   ]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
+
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+  
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
 
   const handleSend = async () => {
     if (input.trim() === '') return;
@@ -67,6 +79,7 @@ export default function Home() {
             </div>
           ))}
           {loading && <div><i>Thinking...</i></div>}
+            <div ref={messagesEndRef} />
         </div>
 
         <div style={{ marginTop: 10, display: 'flex' }}>
