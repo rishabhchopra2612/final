@@ -22,6 +22,8 @@ export async function POST(req) {
       - Keep answers concise and student-friendly.
       - Avoid large paragraphs.
       - Use simple language.
+      - When writing fractions, use proper Unicode fraction characters (e.g. ½, ¼, ¾) whenever possible.
+      - give answwers for maths questions in proper form for easy readability.
       If asked anything irrelevant, politely reply: 
       "I'm designed to assist only with educational topics. Please ask subject-related questions."`
         },
