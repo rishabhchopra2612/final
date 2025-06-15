@@ -16,6 +16,16 @@ export default function Home() {
     setInput('');
     setLoading(true);
 
+  const formatFractions = (text) => {
+  return text
+    .replace(/1\/2/g, '½')
+    .replace(/1\/4/g, '¼')
+    .replace(/3\/4/g, '¾')
+    .replace(/1\/3/g, '⅓')
+    .replace(/2\/3/g, '⅔');
+  };
+
+
     try {
       const response = await fetch('/api/chat', {
         method: 'POST',
@@ -64,7 +74,7 @@ export default function Home() {
               margin: msg.role === 'user' ? '10px 0 10px auto' : '10px auto 10px 0'
             }}>
               <strong>{msg.role === 'user' ? 'You' : 'GREEN AI'}:</strong>
-              <div dangerouslySetInnerHTML={{ __html: msg.content.replace(/\n/g, '<br/>') }} />
+              <div dangerouslySetInnerHTML={{ __html: formatFractions(msg.content.replace(/\n/g, '<br/>')) }} />
             </div>
           ))}
           {loading && <div><i>Thinking...</i></div>}
